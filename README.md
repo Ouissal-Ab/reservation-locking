@@ -10,7 +10,7 @@ Quand deux utilisateurs modifient la même réservation en même temps, la derni
 
 ### 1. Conflit détecté sans retry
 
-![Simulation du conflit](Screenshot/ReservationSimulator .png)
+![Simulation du conflit](Screenshot/ReservationSimulator.png)
 
 Exécution de la classe `ConcurrentReservationSimulator`. Deux transactions chargent la même réservation en version 0. La transaction 1 la modifie en « Salle B » : la modification réussit et la version passe à 1. La transaction 2 tente ensuite de la modifier en « Salle C » avec sa copie obsolète (version 0) : le conflit est détecté (`Version obsolète : attendue 0, trouvée en base 1`) et sa modification est refusée. L'état final est **Salle B (version 1)** : la première modification n'a pas été écrasée.
 
